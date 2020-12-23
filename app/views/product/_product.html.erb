@@ -9,26 +9,21 @@
 
   <div class="col-10 good-content">
     <div class="good-title">
-      <a href="#" class="text-dark">My best good</a>
+      <a href="#" class="text-dark"><%= description.title %></a>
     </div>
     <div class="">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-      exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-      officia deserunt mollit anim id est laborum.
+      <%= description.text %>
     </div>
     <div class="good-info mt-auto">
       <div class="row time-auction">
         <p class="col-auto">time left:</p>
-        <p class="col-auto text-danger">0:2:47</p>
+        <p class="col-auto text-danger"><%= description.left_time %></p>
       </div>
       <div class="row">
-        <p class="col-auto">Current price: 1$</p>
-        <p class="col-auto">raise by: 0.01$</p>
+        <p class="col-auto">Current price: <%= description.price %>$</p>
+        <p class="col-auto">raise by: <%= description.raise_by %></p>
         <img class="col-auto btn btn-primary btn-sm btn-light" src="/assets/like.png" height="24">
-        <p class="col-auto"> <p>current buyer: </p> <p class="text-success buyer">you</p></p>
+        <p class="col-auto"> <p>current buyer: </p> <p class="text-success buyer"><%= description.buyer %></p></p>
       </div>
     </div>
   </div>

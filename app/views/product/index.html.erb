@@ -1,4 +1,4 @@
-<%= render 'head' %>
+<%= render 'head_unauth' %>
 
 <!-- Begin page content -->
 <main role="main" class="d-flex justify-content-center container">
@@ -9,9 +9,9 @@
       </div>
 
 
-      <%= render 'product' %>
-      <%= render 'product' %>
-      <%= render 'product' %>
+      <% @descriptions.each do |description| %>
+        <%= render 'product', description: description %>
+      <% end %>
 
 
     </div>

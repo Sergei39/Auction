@@ -1,11 +1,11 @@
-<%= render 'head' %>
+<%= render 'head_auth', user: @user %>
 
 <main role="main" class="container">
   <%= render 'head_profile' %>
   <div class="price container">
     <div class="row">
       <h4 class="col-4 body-title">Current balance:</h4>
-      <h4 class="col-4 body-text">500$</h4>
+      <h4 class="col-4 body-text"><%= @user.price %>$</h4>
     </div>
     <div class="row">
       <h4 class="col-4 body-title">Add:</h4>
@@ -16,8 +16,9 @@
 
   <h4 class="title-review">Reviews</h4>
 
-  <%= render 'review' %>
-  <%= render 'review' %>
+  <% @reviews.each do |review| %>
+    <%= render 'review', review: review %>
+  <% end %>
 
 </main>
 

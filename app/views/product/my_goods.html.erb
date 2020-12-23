@@ -1,10 +1,11 @@
-<%= render 'head' %>
+<%= render 'head_unauth' %>
 <main role="main" class="d-flex justify-content-center container flex-column">
   <%= render 'head_profile' %>
 
   <dev class="">
-    <%= render 'body_product' %>
-    <%= render 'body_product' %>
+    <% @products.each do |product| %>
+      <%= render 'body_product', product: product %>
+    <% end %>
 
   </dev>
 </main>

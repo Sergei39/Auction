@@ -41,7 +41,6 @@ end
 
 
 class PageController < ApplicationController
-  include SessionHelper
 
   def index
     @user = current_user

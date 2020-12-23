@@ -1,5 +1,52 @@
-<h1>New User</h1>
+<%= render 'head_unauth' %>
+<main role="main" class="d-flex justify-content-center container">
+  <div class="row container d-flex justify-content-between">
+    <div class="col-9 row">
+      <div class="col-4 name-page">
+        <h4>Registration</h4>
+      </div>
 
-<%= render 'form', user: @user %>
+      <%= form_with(model: @user, local: true, class: "body-page col-12") do |form| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= link_to 'Back', users_path %>
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group row">
+          <%= form.label :'Nick name', class: 'col-sm-3 col-form-label' %>
+          <div class="col-sm-9">
+            <%= form.text_field :username, class: 'form-control', placeholder: 'dr_pepper' %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :'Password', class: 'col-sm-3 col-form-label' %>
+          <div class="col-sm-9">
+            <%= form.password_field :password, class: 'form-control', required: true %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :'Repeat Password', class: 'col-sm-3 col-form-label' %>
+          <div class="col-sm-9">
+            <%= form.password_field :password_confirmation, class: 'form-control', required: true %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <%= form.submit :SignUp, class: 'btn btn-primary mb-2 btn-dark reg-btn' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>
+
+<%#= link_to 'Back', users_path %>

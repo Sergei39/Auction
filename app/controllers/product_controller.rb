@@ -9,19 +9,6 @@ class User
   attr_accessor :price
 end
 
-class Product
-  def initialize(title, text, price)
-    @title = 'title' + title.to_s
-    @text = 'text' + text.to_s
-    @price = price
-  end
-
-  # ссылка на пользователя чьи это товары
-  attr_reader :title
-  attr_accessor :text
-  attr_accessor :price
-end
-
 class Review
   def initialize()
     @text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
@@ -54,23 +41,22 @@ end
 
 class ProductController < ApplicationController
 
-  def index
-    @user = User.new
-    @descriptions = Array.new(6){ |elem| DescriptionProduct.new() }
+  def new
   end
 
-  def profile
-    @user = User.new
-    @reviews = Array.new(6){ |elem| Review.new() }
+  def create
+    # render plain: params[:product].inspect
+    @product = Product.new(product_params)
+
+    @product.save
+    redirect_to @product
   end
 
-  def participation
-    @user = User.new
-    @descriptions = Array.new(6){ |elem| DescriptionProduct.new() }
+  private def product_params
+    params.require(:product).permit(:title, :text, :price)
   end
 
-  def my_goods
-    @user = User.new
-    @products = Array.new(6){ |elem| Product.new(elem, elem, elem) }
+  def show
+    @product = Product.find(params[:id])
   end
 end

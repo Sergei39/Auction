@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  text: MyText
+  time_end: 2020-12-23 20:45:26
+  price: 1.5
+  raise_by: 1.5
+  buyer: MyString
+
+two:
+  title: MyString
+  text: MyText
+  time_end: 2020-12-23 20:45:26
+  price: 1.5
+  raise_by: 1.5
+  buyer: MyString

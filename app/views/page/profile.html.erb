@@ -5,7 +5,7 @@
   <div class="price container">
     <div class="row">
       <h4 class="col-4 body-title">Current balance:</h4>
-      <h4 class="col-4 body-text"><%= @user.price.round(2) %>$</h4>
+      <h4 class="col-4 body-text"><%= @user.price&.round(2) %>$</h4>
     </div>
     <div class="row">
       <h4 class="col-4 body-title">Add:</h4>
@@ -20,6 +20,28 @@
     <%= render 'review', review: review %>
   <% end %>
 
+  <% unless @user_rev.nil? %>
+  <div class="row container d-flex justify-content-between">
+
+    <div class="body-page col-12">
+      <%= form_for :review, url: {:controller => 'reviews', action: 'create'} do |f| %>
+
+        <div class="form-group">
+          <%= f.label :'Leave a review', class: 'col-form-label' %>
+          <div class="">
+            <%= f.text_area :text, class: 'form-control', placeholder: 'Text Description', rows: '8' %>
+          </div>
+        </div>
+
+        <%= f.hidden_field :user_id, value: @user_rev.id %>
+        <%= f.submit :'REVIEW', class: 'btn btn-primary mb-2 btn-dark reg-btn' %>
+      <% end %>
+    </div>
+
+
+  </div>
+  <% end %>
+
 </main>
 
-<%= render 'footer' %>
+<%#= render 'footer' %>

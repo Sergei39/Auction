@@ -6,7 +6,7 @@
     </div>
 
     <div class="form-inline">
-      <p class="navbar-brand"><%= @user.price.round(2) %>$</p>
+      <p class="navbar-brand"><%= @user.price&.round(2) %>$</p>
       <img class="avatart-img" src="/assets/200.jpeg" height="48" alt="" loading="lazy">
       <div class="head-box">
         <p class="avatar-name text-light"><%= @user.username %></p>

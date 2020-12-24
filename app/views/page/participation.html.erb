@@ -3,7 +3,7 @@
   <%= render 'head_profile' %>
 
   <% @descriptions.each do |description| %>
-    <%= render 'product', description: description %>
+    <%= render 'product', description: description, user: description.prod&.userr %>
   <% end %>
 
 

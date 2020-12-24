@@ -9,16 +9,16 @@
 #   attr_accessor :price
 # end
 
-class Review
-  def initialize()
-    @text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    @date = '18.12.2020'
-  end
-
-  # ссылка на того кто оставил отзыв
-  attr_accessor :text
-  attr_accessor :date
-end
+# class Review
+#   def initialize()
+#     @text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+#     @date = '18.12.2020'
+#   end
+#
+#   # ссылка на того кто оставил отзыв
+#   attr_accessor :text
+#   attr_accessor :date
+# end
 
 class DescriptionProduct
   def initialize()
@@ -50,21 +50,25 @@ class PageController < ApplicationController
 
   def profile
     @user = current_user
-    @reviews = Array.new(6){ |elem| Review.new() }
+    @reviews = Review.where(:user_id => current_user.id)
+    @user_rev = nil
+    @user_rev = User.find(params[:id]) if (params[:id])
+    @user_rev = nil if @user_rev == @user
+    @reviews = Review.where(:user_id => @user_rev.id) unless @user_rev.nil?
   end
 
   def participation
     @user = current_user
-    @descriptions = Description.all.each do |descr|
-      descr.prod&.user == current_user || descr.buyer_id == current_user.id
+    @descriptions = Description.all.select do |descr|
+      descr.prod&.userr&.id == current_user.id || descr.buyer_id == current_user.id
     end
     # @descriptions = Description.where(:buyer_id => current_user.id || prod.user == @user)
   end
 
   def my_goods
     @user = current_user
-    @products = Product.where(:user => @user.id).each do |prod|
-      !prod.description
+    @products = Product.where(:user => @user.id).select do |prod|
+      !prod.description.nil?
     end
     # @products = Product.where(:user => @user.id)
   end

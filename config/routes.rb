@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'logout' => 'session#logout', as: 'logout'
 
   resources :product
-  resources :descriptions
+  resources :descriptions, as: 'descriptions'
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

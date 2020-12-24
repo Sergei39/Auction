@@ -1,0 +1,36 @@
+<% if signed_in? %>
+<header>
+  <nav class="navbar navbar-dark bg-dark sticky-top justify-content-around">
+    <div class="">
+      <p><span class=""><%= link_to "Auction", home_path, class: "navbar-brand brand" %></span></p>
+    </div>
+
+    <div class="form-inline">
+      <p class="navbar-brand"><%= @user.price %>$</p>
+      <img class="avatart-img" src="/assets/200.jpeg" height="48" alt="" loading="lazy">
+      <div class="head-box">
+        <p class="avatar-name text-light"><%= @user.username %></p>
+        <div class="head-container">
+          <p><span class=""><%= link_to 'Log out', logout_path, class: "head-link text-white-50" %></span></p>
+          <p><span class=""><%= link_to "profile", profile_path, class: "head-link text-white-50" %></span></p>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<% else %>
+  <header>
+    <nav class="navbar navbar-dark bg-dark sticky-top justify-content-around">
+      <div class="">
+        <p><span class=""><%= link_to "Auction", home_path, class: "navbar-brand brand" %></span></p>
+      </div>
+
+      <div class="form-inline">
+        <div class="head-container">
+          <p><a class=""><%= link_to "log in", login_path, class: "head-link text-white-50" %></a></p>
+          <p><a class=""><%= link_to "register", new_user_path, class: "head-link text-white-50" %></a></p>
+        </div>
+      </div>
+    </nav>
+  </header>
+<% end %>

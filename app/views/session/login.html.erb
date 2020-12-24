@@ -1,4 +1,4 @@
-<%= render 'head_unauth' %>
+<%= render 'head' %>
 <main role="main" class="d-flex justify-content-center container">
   <div class="row container d-flex justify-content-between">
     <div class="name-page col-12">
@@ -14,7 +14,7 @@
         <label for="inputPassword">Password</label>
         <%= f.password_field :password, required: true, class: "form-control" %>
       </div>
-      <%= f.submit :password, required: true, class: "btn btn-primary btn-dark" %>
+      <%= f.submit :login, required: true, class: "btn btn-primary btn-dark" %>
 
       <div class="new-account">
         <span class=""><%= link_to 'create new account', new_user_path, class: "text-dark" %></span>

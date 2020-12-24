@@ -6,6 +6,7 @@ class ProductController < ApplicationController
   def create
     # render plain: params[:product].inspect
     @product = Product.new(product_params)
+    @product.user = current_user.id
 
     @product.save
     redirect_to @product

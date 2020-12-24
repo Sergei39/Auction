@@ -1,5 +1,5 @@
 class SessionController < ApplicationController
-  # skip_before_action :require_login, only: %i[login create]
+  skip_before_action :require_login, only: %i[login create]
 
   def login; end
 
@@ -9,7 +9,7 @@ class SessionController < ApplicationController
     if user&.authenticate(params[:password])
       p 'LOGIN'
       sign_in user
-      redirect_to root_path
+      redirect_to home_path
     else
       p 'REDIRECT'
       flash[:danger] = 'Невалидный логин и пароль'

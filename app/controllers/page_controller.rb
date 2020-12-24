@@ -41,6 +41,7 @@ end
 
 
 class PageController < ApplicationController
+  skip_before_action :require_login, only: %i[index]
 
   def index
     @user = current_user
@@ -48,17 +49,17 @@ class PageController < ApplicationController
   end
 
   def profile
-    @user = User.new
+    @user = current_user
     @reviews = Array.new(6){ |elem| Review.new() }
   end
 
   def participation
-    @user = User.new
+    @user = current_user
     @descriptions = Array.new(6){ |elem| DescriptionProduct.new() }
   end
 
   def my_goods
-    @user = User.new
-    @products = Product.all
+    @user = current_user
+    @products = Product.where(:user => @user.id)
   end
 end

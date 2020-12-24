@@ -1,26 +1,46 @@
-<h2>Добавление нового товара</h2>
-<%= form_for :product, url: {action: "create"} do |f| %>
-  <p>
-    Название<br>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    Описание<br>
-    <%= f.text_area :text %>
-  </p>
-  <p>
-    До какого времени<br>
-    <%= f.time_field :time_end %>
-  </p>
-  <p>
-    Начальная цена<br>
-    <%= f.number_field :price, step: :any %>
-  </p>
-  <p>
-    Шаг повышения<br>
-    <%= f.number_field :raise_by, step: :any %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'head', user: @user %>
+
+<main role="main" class="d-flex justify-content-center container">
+  <div class="row container d-flex justify-content-between">
+    <div class="col-4 name-page">
+      <h4>Sale</h4>
+    </div>
+
+    <div class="body-page col-12">
+    <%= form_for :description, url: {action: 'create'} do |f| %>
+      <div class="form-group row">
+        <%= f.label :'Start price', class: 'col-sm-3 col-form-label' %>
+        <div class="col-sm-9">
+          <%= f.number_field :price, step: :any, class: 'form-control', placeholder: @product.price.to_s %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :'Raise by', class: 'col-sm-3 col-form-label' %>
+        <div class="col-sm-9">
+          <%= f.number_field :raise_by, step: :any, class: 'form-control', placeholder: '0.5' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :'Description', class: 'col-sm-3 col-form-label' %>
+        <div class="col-sm-9">
+          <%= f.text_area :text, class: 'form-control', placeholder: 'Text Description', rows: '8' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :'Time end', class: 'col-sm-3 col-form-label' %>
+        <div class="col-sm-9">
+          <%= f.time_field :time_end, class: 'form-control' %>
+        </div>
+      </div>
+
+        <%= f.hidden_field :product, value: @product.id %>
+      <%= f.submit :'SALE', class: 'btn btn-primary mb-2 btn-dark reg-btn' %>
+    <% end %>
+    </div>
+
+
+  </div>
+</main>

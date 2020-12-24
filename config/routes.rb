@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'profile' => 'page#profile', as: 'profile'
   get 'participation' => 'page#participation', as: 'participation'
   get 'my_goods' => 'page#my_goods', as: 'my_goods'
+  get 'add' => 'page#add', as: 'add'
+  get 'raise' => 'descriptions#raise', as: 'raise'
 
   get 'login' => 'session#login', as: 'login'
   post 'session/create'

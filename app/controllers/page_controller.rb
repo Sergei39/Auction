@@ -45,7 +45,7 @@ class PageController < ApplicationController
 
   def index
     @user = current_user
-    @descriptions = Array.new(6){ |elem| DescriptionProduct.new() }
+    @descriptions = Description.all
   end
 
   def profile
@@ -55,11 +55,23 @@ class PageController < ApplicationController
 
   def participation
     @user = current_user
-    @descriptions = Array.new(6){ |elem| DescriptionProduct.new() }
+    @descriptions = Description.all.each do |descr|
+      descr.prod&.user == current_user || descr.buyer_id == current_user.id
+    end
+    # @descriptions = Description.where(:buyer_id => current_user.id || prod.user == @user)
   end
 
   def my_goods
     @user = current_user
-    @products = Product.where(:user => @user.id)
+    @products = Product.where(:user => @user.id).each do |prod|
+      !prod.description
+    end
+    # @products = Product.where(:user => @user.id)
+  end
+
+  def add
+    current_user.price = current_user.price + 10
+    current_user.save
+    redirect_to profile_path
   end
 end

@@ -10,28 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_23_220401) do
+ActiveRecord::Schema.define(version: 2020_12_24_125724) do
 
   create_table "descriptions", force: :cascade do |t|
     t.text "text"
     t.time "time_end"
     t.float "price"
     t.float "raise_by"
-    t.string "buyer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "product"
+    t.integer "buyer"
+    t.integer "buyer_id"
     t.index ["product"], name: "index_descriptions_on_product", unique: true
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
-    t.float "price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user"
-  end
+# Could not dump table "products" because of following StandardError
+#   Unknown type 'boolear' for column 'description'
 
   create_table "users", force: :cascade do |t|
     t.string "password_digest"

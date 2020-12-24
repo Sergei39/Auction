@@ -3,7 +3,7 @@
     <img class="person-img" src="/assets/200.jpeg" alt="">
     <p class="rating">Rating: +100</p>
     <div class="reviews">
-      <a href="#">reviews</a>
+      <span><%= link_to user&.username, profile_path(id: user&.id) %></span>
     </div>
   </div>
 
@@ -17,13 +17,17 @@
     <div class="good-info mt-auto">
       <div class="row time-auction">
         <p class="col-auto">time left:</p>
-        <p class="col-auto text-danger"><%= description.left_time %></p>
+        <p class="col-auto text-danger"><%= description.time_end %></p>
       </div>
       <div class="row">
-        <p class="col-auto">Current price: <%= description.price %>$</p>
+        <p class="col-auto">Current price: <%= description.price.round(2) %>$</p>
         <p class="col-auto">raise by: <%= description.raise_by %></p>
-        <img class="col-auto btn btn-primary btn-sm btn-light" src="/assets/like.png" height="24">
-        <p class="col-auto"> <p>current buyer: </p> <p class="text-success buyer"><%= description.buyer %></p></p>
+        <span>
+          <%= link_to raise_path(id: description.product) do %>
+            <%= image_tag 'like.png', class: 'col-auto btn btn-primary btn-sm btn-light', height: '24' %>
+          <% end %>
+        </span>
+        <p class="col-auto"> <p>current buyer: </p> <p class="text-success buyer"><%= description.buyer&.username %></p></p>
       </div>
     </div>
   </div>

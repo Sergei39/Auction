@@ -1,4 +1,7 @@
 class Description < ApplicationRecord
+  validates :price, numericality: true, presence: true
+  validates :raise_by, numericality: true, presence: true
+
   def title
     unless self.product.nil?
       Product.find(self.product).title

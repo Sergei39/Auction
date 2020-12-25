@@ -33,4 +33,26 @@
 
   </div>
 </main>
+<script type="text/javascript">
+    $('.js-stake').click(function(ev) {
+
+        var ctx = new Map();
+
+        ev.preventDefault();
+        var $this = $(this),
+            id = $this.attr('id');
+        ctx['description_id'] = id;
+        console.log("CONTEXT " + ctx['description_id']);
+        $.ajax('/raise?id=' + id, {
+            method: 'POST',
+            data: ctx
+        }).done(function(data) {
+            $('#price').text(Math.round(data.price) + '$');
+            $('#username-' + id).text(data.username);
+            $('#price-' + id).text('Current price: ' + data.price_cur + '$');
+            console.log("DATA " + data.price);
+        });
+        console.log("HERE " + id);
+    });
+</script>
 <%#= render 'footer' %>

@@ -1,4 +1,6 @@
 class DescriptionsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: %i[raise]
+
   def new
     # проверяем принадлежит ли product пользователю
     product_id = params[:id]
@@ -18,7 +20,9 @@ class DescriptionsController < ApplicationController
 
     @description.save
 
-    Product.(find(@description.product_id).description = true).save
+    pr = Product.find(@description.product)
+    pr.description = 1
+    pr.save
     redirect_to participation_path
   end
 
@@ -31,7 +35,7 @@ class DescriptionsController < ApplicationController
   end
 
   def raise
-    descr = Description.find_by(product: params[:id])
+    descr = Description.find(params[:id])
     last_buyer = descr.buyer
     if last_buyer != current_user
       last_buyer.price += descr.price unless last_buyer.nil?
@@ -43,6 +47,13 @@ class DescriptionsController < ApplicationController
       descr.save
       current_user.save
     end
-    redirect_to home_path
+
+
+    p 'llllllllll'
+    render json:
+             { price: current_user.price,
+               username: descr.buyer.username,
+               price_cur: descr.price
+             }
   end
 end

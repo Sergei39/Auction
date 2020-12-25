@@ -6,7 +6,9 @@ class Description < ApplicationRecord
   end
 
   def buyer
-    User.find(self.buyer_id) unless self.buyer_id.nil?
+    unless self.product.nil?
+      User.find(self.buyer_id) unless self.buyer_id.nil?
+    end
   end
 
   def prod

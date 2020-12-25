@@ -1,13 +1,13 @@
 <div class="row good-box border border-dark rounded">
   <div class="col-2 info-person">
     <img class="person-img" src="/assets/200.jpeg" alt="">
-    <p class="rating">Rating: +100</p>
+<!--    <p class="rating">Rating: +100</p>-->
     <div class="reviews">
       <span><%= link_to user&.username, profile_path(id: user&.id) %></span>
     </div>
   </div>
 
-  <div class="col-10 good-content">
+  <div class="col-10 good-content d-flex align-items-start flex-column">
     <div class="good-title">
       <a href="#" class="text-dark"><%= description.title %></a>
     </div>
@@ -17,17 +17,17 @@
     <div class="good-info mt-auto">
       <div class="row time-auction">
         <p class="col-auto">time left:</p>
-        <p class="col-auto text-danger"><%= description.time_end %></p>
+        <p class="col-auto text-danger"><%= view_time(left_time description.time_end) %></p>
       </div>
       <div class="row">
-        <p class="col-auto">Current price: <%= description.price.round(2) %>$</p>
-        <p class="col-auto">raise by: <%= description.raise_by %></p>
+        <p class="col-auto" id="price-<%= description.id %>">Current price: <%= description.price.round(2) %>$</p>
+        <p class="col-auto">raise by: <%= description.raise_by %>$</p>
         <span>
-          <%= link_to raise_path(id: description.product) do %>
-            <%= image_tag 'like.png', class: 'col-auto btn btn-primary btn-sm btn-light', height: '24' %>
+          <%= link_to do %>
+            <%= image_tag 'like.png', class: 'col-auto btn btn-primary btn-sm btn-light js-stake', id: description.id, height: '24' %>
           <% end %>
         </span>
-        <p class="col-auto"> <p>current buyer: </p> <p class="text-success buyer"><%= description.buyer&.username %></p></p>
+        <p class="col-auto"> <p>current buyer: </p> <p class="text-success buyer" id="username-<%= description.id %>"><%= description.buyer&.username %></p></p>
       </div>
     </div>
   </div>

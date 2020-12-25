@@ -2,19 +2,25 @@
 <header>
   <nav class="navbar navbar-dark bg-dark sticky-top justify-content-around">
     <div class="">
-      <p><span class=""><%= link_to "Auction", home_path, class: "navbar-brand brand" %></span></p>
+      <p><span class=""><%= link_to t('head.auction'), home_path, class: "navbar-brand brand" %></span></p>
     </div>
 
     <div class="form-inline">
-      <p class="navbar-brand"><%= @user.price %>$</p>
+      <p class="navbar-brand", id="price"><%= @user.price&.round(2) %>$</p>
       <img class="avatart-img" src="/assets/200.jpeg" height="48" alt="" loading="lazy">
       <div class="head-box">
         <p class="avatar-name text-light"><%= @user.username %></p>
         <div class="head-container">
-          <p><a class="head-link text-white-50" href="#">log out</a></p>
-          <p><span class=""><%= link_to "profile", profile_path, class: "head-link text-white-50" %></span></p>
+          <p><span class=""><%= link_to t('head.logout'), logout_path, class: "head-link text-white-50" %></span></p>
+          <p><span class=""><%= link_to t('head.profile'), profile_path, class: "head-link text-white-50" %></span></p>
         </div>
       </div>
+      <li class="nav-item<%= " active" if I18n.locale == :ru %>">
+        <%= link_to "Рус", { locale: :ru }, class: "head-link text-white-50" %>
+      </li>
+      <li class="nav-item<%= " active" if I18n.locale == :en %>">
+        <%= link_to "En", { locale: :en }, class: "head-link text-white-50" %>
+      </li>
     </div>
   </nav>
 </header>
@@ -22,13 +28,13 @@
   <header>
     <nav class="navbar navbar-dark bg-dark sticky-top justify-content-around">
       <div class="">
-        <p><span class=""><%= link_to "Auction", home_path, class: "navbar-brand brand" %></span></p>
+        <p><span class=""><%= link_to t('head.auction'), home_path, class: "navbar-brand brand" %></span></p>
       </div>
 
       <div class="form-inline">
         <div class="head-container">
-          <p><a class=""><%= link_to "log in", login_path, class: "head-link text-white-50" %></a></p>
-          <p><a class=""><%= link_to "register", new_user_path, class: "head-link text-white-50" %></a></p>
+          <p><a class=""><%= link_to t('head.login'), login_path, class: "head-link text-white-50" %></a></p>
+          <p><a class=""><%= link_to t('head.register'), new_user_path, class: "head-link text-white-50" %></a></p>
         </div>
       </div>
     </nav>

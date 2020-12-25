@@ -8,8 +8,8 @@
       <%= product.text %>
     </div>
     <div class="good-info d-flex container justify-content-between">
-      <p class="">Price: <%= product.price %></p>
-      <span><%= link_to 'Put up for auction', new_description_path(id: product.id), class: 'btn btn-danger', type: 'button' %></span>
+      <p class=""><%= t('product.body.price') %>: <%= product.price %></p>
+      <span><%= link_to t('product.sale'), new_description_path(id: product.id), class: 'btn btn-danger', type: 'button' %></span>
     </div>
   </div>
 </div>

@@ -16,18 +16,18 @@
     </div>
     <div class="good-info mt-auto">
       <div class="row time-auction">
-        <p class="col-auto">time left:</p>
+        <p class="col-auto"><%= t('description.time_left') %>:</p>
         <p class="col-auto text-danger"><%= view_time(left_time description.time_end) %></p>
       </div>
       <div class="row">
-        <p class="col-auto" id="price-<%= description.id %>">Current price: <%= description.price.round(2) %>$</p>
-        <p class="col-auto">raise by: <%= description.raise_by %>$</p>
+        <p class="col-auto" id="price-<%= description.id %>"><%= t('description.current_price') %>: <%= description.price.round(2) %>$</p>
+        <p class="col-auto"><%= t('description.raise_by') %>: <%= description.raise_by %>$</p>
         <span>
           <%= link_to do %>
             <%= image_tag 'like.png', class: 'col-auto btn btn-primary btn-sm btn-light js-stake', id: description.id, height: '24' %>
           <% end %>
         </span>
-        <p class="col-auto"> <p>current buyer: </p> <p class="text-success buyer" id="username-<%= description.id %>"><%= description.buyer&.username %></p></p>
+        <p class="col-auto"> <p><%= t('description.current_buyer') %>: </p> <p class="text-success buyer" id="username-<%= description.id %>"><%= description.buyer&.username %></p></p>
       </div>
     </div>
   </div>

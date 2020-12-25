@@ -31,3 +31,56 @@
 
 en:
   hello: "Hello world"
+
+  head:
+    auction: "Auction"
+    logout: "log out"
+    profile: "profile"
+    login: "log in"
+    register: "register"
+
+  product:
+    sale: "Put up for auction"
+    add: "Add new"
+    body:
+      name: "Name product"
+      body: "Body"
+      price: "Price"
+      save: "Save"
+
+  head_profile:
+    profile: "Profile"
+    participate: "Participate in the auction"
+    my_goods: "Purchased goods"
+
+  description:
+    time_left: "time left"
+    current_price: "Current price"
+    raise_by: "raise by"
+    current_buyer: "current buyer"
+
+    form:
+      start_price: "Start Price"
+      raise_by: "Raise by"
+      descr: "Description"
+      time_end: "Time end"
+      sale: "SALE"
+
+  review:
+    date: "Date"
+
+  index:
+    new_goods: "New Goods"
+
+  profile:
+    current_balance: "Current balance"
+    add: "Add"
+    username: "Username"
+    reviews: "Reviews"
+
+  registration:
+    name: "Registration"
+    username: "Nick name"
+    password: "Password"
+    repeat_password: "Repeat Password"
+    sign_up: "SignUp"

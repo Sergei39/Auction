@@ -1,18 +1,35 @@
-<h2>Добавление нового товара</h2>
-<%= form_for :product, url: {action: "create"} do |f| %>
-  <p>
-    Название<br>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    Содержимое продукта<br>
-    <%= f.text_area :text %>
-  </p>
-  <p>
-    На сколько оцениваете<br>
-    <%= f.number_field :price, step: :any %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'head', user: @user %>
+
+<main role="main" class="d-flex justify-content-center container">
+  <div class="row container d-flex justify-content-between">
+
+    <div class="body-page col-12">
+      <%= form_for :product, url: {action: 'create'} do |f| %>
+        <div class="form-group row">
+          <%= f.label t('product.body.name'), class: 'col-sm-3 col-form-label' %>
+          <div class="col-sm-9">
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label t('product.body.body'), class: 'col-sm-3 col-form-label' %>
+          <div class="col-sm-9">
+            <%= f.text_area :text, class: 'form-control', rows: '8' %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label t('product.body.price'), class: 'col-sm-3 col-form-label' %>
+          <div class="col-sm-9">
+            <%= f.number_field :price, step: :any, class: 'form-control' %>
+          </div>
+        </div>
+
+        <%= f.submit t('product.body.save'), class: 'add-pr btn btn-primary mb-2 btn-dark reg-btn' %>
+      <% end %>
+    </div>
+
+
+  </div>
+</main>

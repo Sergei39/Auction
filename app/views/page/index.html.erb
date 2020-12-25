@@ -5,7 +5,7 @@
   <div class="row container d-flex justify-content-between">
     <div class="col-9 row">
       <div class="col-4 good-new">
-        <h3 class="main-title">New Goods</h3>
+        <h3 class="main-title"><%= t('index.new_goods') %></h3>
       </div>
 
 
@@ -16,20 +16,20 @@
 
     </div>
 
-    <div class="col-3 info-right">
-      <div class="info-box">
-        <div class="info-title">
-          <h3 class="main-title">Popular Categories</h3>
-        </div>
-        <div class="tags-container">
-          <a href="#" class="tag text-dark">perl</a>
-          <a href="#" class="tag text-dark">python</a>
-          <a href="#" class="tag text-dark">TehnoPark</a>
-          <a href="#" class="tag text-dark">MySQL</a>
-          <a href="#" class="tag text-dark">django</a>
-        </div>
-      </div>
-    </div>
+<!--    <div class="col-3 info-right">-->
+<!--      <div class="info-box">-->
+<!--        <div class="info-title">-->
+<!--          <h3 class="main-title">Popular Categories</h3>-->
+<!--        </div>-->
+<!--        <div class="tags-container">-->
+<!--          <a href="#" class="tag text-dark">perl</a>-->
+<!--          <a href="#" class="tag text-dark">python</a>-->
+<!--          <a href="#" class="tag text-dark">TehnoPark</a>-->
+<!--          <a href="#" class="tag text-dark">MySQL</a>-->
+<!--          <a href="#" class="tag text-dark">django</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
   </div>
 </main>
@@ -49,10 +49,9 @@
         }).done(function(data) {
             $('#price').text(Math.round(data.price) + '$');
             $('#username-' + id).text(data.username);
-            $('#price-' + id).text('Current price: ' + data.price_cur + '$');
+            $('#price-' + id).text('<%= t('description.current_price') %>: ' + data.price_cur + '$');
             console.log("DATA " + data.price);
         });
         console.log("HERE " + id);
     });
 </script>
-<%#= render 'footer' %>

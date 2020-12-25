@@ -5,25 +5,25 @@
   <% if @user_rev.nil? %>
   <div class="price container">
     <div class="row">
-      <h4 class="col-4 body-title">Current balance:</h4>
+      <h4 class="col-4 body-title"><%= t('profile.current_balance') %>:</h4>
       <h4 class="col-4 body-text"><%= @user.price&.round(2) %>$</h4>
     </div>
     <div class="row">
-      <h4 class="col-4 body-title">Add:</h4>
+      <h4 class="col-4 body-title"><%= t('profile.add') %>:</h4>
       <h4 class="col-4 body-text"><span class=""><%= link_to '+', add_path, class: 'text-dark' %></span></h4>
     </div>
   </div>
   <% else %>
     <div class="price container">
       <div class="row">
-        <h4 class="col-4 body-title">Username:</h4>
+        <h4 class="col-4 body-title"><%= t('profile.username') %>:</h4>
         <h4 class="col-4 body-text"><%= @user_rev.username %></h4>
       </div>
     </div>
   <% end %>
 
 
-  <h4 class="title-review">Reviews</h4>
+  <h4 class="title-review"><%= t('profile.reviews') %></h4>
 
   <% @reviews.each do |review| %>
     <%= render 'review', review: review, user: review.reviewer %>

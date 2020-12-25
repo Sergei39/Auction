@@ -3,6 +3,17 @@ class ApplicationController < ActionController::Base
   include PageHelper
 
   before_action :require_login
+  before_action :set_locale
+
+  private
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def default_url_option(options = {})
+    { locale: I18n.locale }.merge options
+  end
 
   private
 

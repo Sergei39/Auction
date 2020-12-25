@@ -10,14 +10,14 @@ class ProductController < ApplicationController
     @product.description = false
 
     @product.save
-    redirect_to @product
+    redirect_to my_goods_path
   end
 
   private def product_params
     params.require(:product).permit(:title, :text, :price)
   end
 
-  def show
-    @product = Product.find(params[:id])
-  end
+  # def show
+  #   @product = Product.find(params[:id])
+  # end
 end

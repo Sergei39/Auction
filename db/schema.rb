@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_25_012127) do
+ActiveRecord::Schema.define(version: 2020_12_25_012514) do
 
   create_table "descriptions", force: :cascade do |t|
     t.text "text"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_012127) do
     t.integer "buyer"
     t.integer "buyer_id"
     t.datetime "time_end"
+    t.string "title"
     t.index ["product"], name: "index_descriptions_on_product", unique: true
   end
 

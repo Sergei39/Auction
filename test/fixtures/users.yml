@@ -6,6 +6,6 @@ one:
   price: 1.5
 
 two:
-  username: MyString
+  username: MyString2
   password_digest: MyString
   price: 1.5

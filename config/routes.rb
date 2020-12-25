@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post 'raise' => 'descriptions#raise', as: 'raise'
 
   get 'login' => 'session#login', as: 'login'
-  post 'session/create'
+  post 'session/create', as: 'session'
   get 'logout' => 'session#logout', as: 'logout'
 
   resources :product
